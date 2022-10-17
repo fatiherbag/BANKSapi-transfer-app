@@ -1,0 +1,43 @@
+<h1 mat-dialog-title>Add Transfer Form</h1>
+<div>
+  <form [formGroup]="transferForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Account Holder</mat-label>
+      <input formControlName="accountHolder" id="accountHolder1" matInput placeholder="Placeholder">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>IBAN</mat-label>
+      <input formControlName="iban" id="iban" matInput ibanValidator placeholder="Placeholder">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input formControlName="date"id="date" matInput [matDatepicker]="picker">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field  style="margin-bottom: 10px;" appearance="outline">
+      <mat-label>Amount</mat-label>
+      <input type="number" formControlName="amount"
+              class= "alert"
+       id="amount" matInput placeholder="Placeholder"
+       >
+      <mat-error *ngIf="transferForm.get('amount')!.hasError('minlength')">
+        The minimum length for this field is
+        <strong>{{transferForm.get('amount')!.errors?.['minlength'].requiredLength}} characters</strong>
+      </mat-error>
+      <mat-error *ngIf="transferForm.get('amount')!.hasError('maxlength')">
+        The maximum length for this field is
+        <strong>{{transferForm.get('amount')!.errors?.['maxlength'].requiredLength}} characters</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Note</mat-label>
+      <input formControlName="note" id="note" matInput placeholder="Placeholder">
+    </mat-form-field>
+    <div mat-dialog-action [align]="'end'">
+      <button mat-raised-button color="accent" (click)="addTransfer()">{{actionButton}}</button>
+      <button style="margin-left: 10px;" mat-raised-button color="warn" mat-dialog-close="">Close</button>
+    </div>
+  </form>
+</div>
