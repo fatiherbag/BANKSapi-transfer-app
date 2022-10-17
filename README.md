@@ -1,6 +1,19 @@
 # TransferApp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.4.
+## INSTALLED
+
+npm install -g @angular/cli
+ng add @angular/material
+ng add @ngrx/store@latest
+ng add @ngrx/entity@latest
+ng add @ngrx/effects@latest
+ng add @ngrx/router-store@latest
+
+## IBAN Format
+npm install --save angular-iban iban
+
+## `ng test` for unit test.
 
 ## Development server
 
