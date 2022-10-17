@@ -1,21 +1,16 @@
-import {Component, Inject, OnInit, ViewChild} from '@angular/core';
-import {MatDialog, MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {MatDialog} from '@angular/material/dialog';
 import {DialogComponent} from "./dialog/dialog.component";
 import {ApiService} from "./services/api.service";
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
-//transfer-list.component.ts
 import { Store} from "@ngrx/store";
 import * as transferActions from "./state/transfer.actions";
-import {state} from "@angular/animations";
-import {filter, Observable, tap} from "rxjs";
+import { Observable, tap} from "rxjs";
 import {Transfer} from "./transfer.model";
 import {select} from "@ngrx/store";
 import * as fromTransfer from "./state/transfer.reducer"
-import {map} from "rxjs/operators";
-import {TransferState} from "./state/transfer.reducer";
-import {arrRemove} from "rxjs/internal/util/arrRemove";
 
 @Component({
   selector: 'app-root',
