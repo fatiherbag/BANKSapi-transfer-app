@@ -3,6 +3,6 @@ export interface Transfer{
   accountHolder: string;
   iban: string;
   amount: number;
-  date: Date; //check it later
+  date: string;
   note: string;
 }

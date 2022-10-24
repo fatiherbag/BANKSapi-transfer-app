@@ -1,8 +1,9 @@
-import { Action } from "@ngrx/store";
+import {Action, Store} from "@ngrx/store";
 import { Transfer } from "../transfer.model";
 
 import {Update} from "@ngrx/entity";
 import {UpdateNum, UpdateStr} from "@ngrx/entity/src/models";
+import {Injectable} from "@angular/core";
 export enum dialogActionTypes{
   SAVED_DIALOG_SUCCESS = "[Dialog] Saved",
   UPDATE_DIALOG_SUCCESS = "[Dialog] Updated",
@@ -126,3 +127,26 @@ export type ActionTypes =
   DeleteTransfer |
   DeleteTransferSuccess |
   DeleteTransferFail;
+
+
+@Injectable({ providedIn: 'root' })
+export class TransferTestActions {
+  constructor(private store: Store<Transfer>) {}
+
+  public loadTransfers(): void {
+    this.store.dispatch(new LoadTransfers());
+  }
+
+  public createTransfers(payload: Transfer): void {
+    this.store.dispatch(new CreateTransferSuccess(payload));
+  }
+
+  public deleteTransfers(id: string) {
+    this.store.dispatch(new DeleteTransferSuccess(id));
+  }
+
+  public updateTransfers(payload: Transfer) {
+    this.store.dispatch(new UpdateTransferSuccess({id: payload.id, changes: payload}));
+  }
+
+}

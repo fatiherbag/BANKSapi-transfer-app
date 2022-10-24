@@ -99,8 +99,6 @@ describe('DialogComponent', () => {
     expect(component.transferForm.get('note')?.value).toBe('A new transfer.')
 
     //check for formgroup values
-
-
   })
 
 

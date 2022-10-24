@@ -10,9 +10,12 @@ ng add @ngrx/entity@latest
 ng add @ngrx/effects@latest
 ng add @ngrx/router-store@latest
 
+
 ## IBAN Format
 npm install --save angular-iban iban
 
+## MARBLES
+npm i jasmine-marbles
 ## `ng test` for unit test.
 
 ## Development server

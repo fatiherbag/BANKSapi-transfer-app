@@ -8,8 +8,7 @@ import {Store} from "@ngrx/store";
 import * as fromTransfer from "../state/transfer.reducer";
 import * as transferActions from "../state/transfer.actions";
 import {Transfer} from "../transfer.model";
-import {Observable, retry} from "rxjs";
-import {MatDialogModule} from "@angular/material/dialog";
+import {Observable} from "rxjs";
 
 
 
@@ -56,13 +55,7 @@ export class DialogComponent implements OnInit {
         id : null
       });
 
-      // this.store.dispatch(new transferActions.LoadTransfer(this.editData.state.id))
-      // console.log("selected id= " + this.editData.state.id);
-      // this.store.select(fromTransfer.getCurrentTransferId).forEach(
-      //   (value) => console.log( 'values : ' + value));
-      // this.store.select((fromTransfer.getCurrentTransfer)).forEach((val =>{
-      //   console.log('get current Transfer : ' + JSON.stringify(val))
-      // }))
+
       const transfer$ : Observable<Transfer> = this.store.select(
         fromTransfer.getCurrentTransfer
       );

@@ -3,10 +3,11 @@ import {Transfer} from "../transfer.model";
 import * as fromRoot from "../app-state/app-state"
 import {ActionTypes} from "./transfer.actions";
 
-import {createFeatureSelector,createSelector} from "@ngrx/store";
+import {createFeatureSelector, createSelector, Store} from "@ngrx/store";
 import {state} from "@angular/animations";
 import {EntityState,EntityAdapter, createEntityAdapter} from "@ngrx/entity";
 import {isNumber} from "@ngrx/store/src/meta-reducers/utils";
+import {Injectable} from "@angular/core";
 
 export interface TransferState extends EntityState<Transfer>{
   selectedTransferId: string | null,
@@ -127,7 +128,7 @@ const getTransferFeatureState = createFeatureSelector<TransferState>(
 export  const getTransfers = createSelector(
   getTransferFeatureState,
   transferAdapter.getSelectors().selectAll
-  )
+  );
 
 export  const getTransfersLoading = createSelector(
   getTransferFeatureState,
@@ -153,4 +154,3 @@ export  const getCurrentTransfer = createSelector(
   getTransferFeatureState,
   getCurrentTransferId,
   state => state.entities[state.selectedTransferId!]);
-
